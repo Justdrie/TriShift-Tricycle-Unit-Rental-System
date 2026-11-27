@@ -1,0 +1,12 @@
+@extends('layouts.admin')
+@section('content')
+    @include('admin.dashboard')
+    @include('admin.assignments')
+    @include('admin.collections')
+    @include('admin.drivers')
+    @include('admin.tricycles')
+    @include('admin.maintenance')
+    @include('admin.reports')
+    @include('admin.import')
+    @include('admin.activity')
+@endsection

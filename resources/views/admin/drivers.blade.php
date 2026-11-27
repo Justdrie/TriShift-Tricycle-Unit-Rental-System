@@ -1,0 +1,11 @@
+<section data-admin-page="drivers" data-title="Drivers" data-description="Keep regular and substitute driver information organized." hidden>
+    <div class="ts-toolbar justify-content-end"><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#driver-dialog">+ Add New Driver</button></div>
+    <div class="ts-metrics"><x-admin.metric label="Regular Drivers" value="0" note="Awaiting connected records" tone="primary" /><x-admin.metric label="Substitute Drivers" value="0" note="Awaiting connected records" /><x-admin.metric label="Active Profiles" value="0" note="Awaiting connected records" /></div>
+    <x-admin.panel title="Driver Directory"><p class="ts-muted">Search drivers by name or contact number.</p>
+        <div class="ts-directory-filter"><label class="visually-hidden" for="driver-search">Search driver name or contact number</label><input class="form-control" id="driver-search" type="search" placeholder="Search driver name or contact…"><div class="ts-filter-buttons" role="group" aria-label="Driver type">@foreach(['All', 'Regular', 'Substitute'] as $type)<button class="btn {{ $loop->first ? 'btn-soft' : 'btn-white' }}" type="button" data-driver-type="{{ $type }}" aria-pressed="{{ $loop->first ? 'true' : 'false' }}">{{ $type }}</button>@endforeach</div></div>
+        <div class="table-responsive" tabindex="0" role="region" aria-label="Scrollable sample records"><table class="table ts-table"><caption class="visually-hidden">Sample driver directory</caption><thead><tr><th scope="col">Driver Name</th><th scope="col">Driver Type</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead><tbody>
+            @foreach([] as $driver)<tr data-driver-row data-type="Regular"><th scope="row">Driver {{ $driver }}</th><td>Regular</td><td>Active</td><td><button class="ts-text-button" data-profile="Driver {{ $driver }}" type="button" data-bs-toggle="modal" data-bs-target="#profile-dialog">View Profile</button></td></tr>@endforeach
+        </tbody></table></div><p class="ts-empty" id="driver-empty">No drivers match these filters.</p><p class="ts-muted mb-0">Archived driver records are kept to preserve past assignments and payments.</p>
+    </x-admin.panel>
+    <div class="ts-note"><h3>Helpful tip</h3><p>Choose a driver to view the profile and assignment history.</p></div>
+</section>

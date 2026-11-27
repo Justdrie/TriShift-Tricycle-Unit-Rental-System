@@ -1,0 +1,12 @@
+<section data-admin-page="reports" data-title="Reports and Summaries" data-description="Find totals and download records for a selected period." hidden>
+    <x-admin.panel title="Choose Report Period"><div class="ts-report-filters">
+        <x-admin.field label="Start Date" name="report-start" type="date" :required="false"  /><x-admin.field label="End Date" name="report-end" type="date" :required="false"  />
+        <x-admin.field label="Driver" name="report-driver" type="select" :required="false"><option value="">All drivers</option>@foreach([] as $driver)<option>Driver {{ $driver }}</option>@endforeach</x-admin.field>
+        <x-admin.field label="Tricycle" name="report-unit" type="select" :required="false"><option value="">All tricycles</option>@foreach([] as $unit)<option>Unit {{ $unit }}</option>@endforeach</x-admin.field>
+    </div><p id="report-error" class="ts-form-message" role="status" hidden></p></x-admin.panel>
+    <div class="ts-metrics"><x-admin.metric label="Total Collections" value="₱0" note="Awaiting connected records" tone="primary" value-id="report-collections" /><x-admin.metric label="Maintenance Cost" value="₱0" note="Awaiting connected records" value-id="report-maintenance" /><x-admin.metric label="Recorded Assignments" value="0" note="Awaiting connected records" value-id="report-assignments" /></div>
+    <x-admin.panel title="Simple Collection Summary"><p class="ts-muted">Review figures before exporting them to Excel.</p><div class="table-responsive" tabindex="0" role="region" aria-label="Scrollable sample records"><table class="table ts-table"><caption class="visually-hidden">Filtered sample report summaries</caption><thead><tr><th scope="col">Report Type</th><th scope="col">Records</th><th scope="col">Total</th><th scope="col">Export</th></tr></thead><tbody>
+        <tr><th scope="row">Rental Collections</th><td id="report-payment-count">0</td><td id="report-payment-total">₱0</td><td><button type="button" class="ts-text-button" data-export="payments">Download CSV</button></td></tr>
+        <tr><th scope="row">Maintenance Costs</th><td id="report-service-count">0</td><td id="report-service-total">₱0</td><td><button type="button" class="ts-text-button" data-export="services">Download CSV</button></td></tr>
+    </tbody></table></div><p class="ts-muted mb-0">Totals include valid payment records only. Voided payments are excluded. CSV exports contain sample records only.</p></x-admin.panel>
+</section>
